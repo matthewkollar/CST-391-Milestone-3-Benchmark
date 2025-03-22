@@ -1,117 +1,119 @@
-# CST-391: FaithTrack Milestone - Benchmark
+# CST-391: FaithTrack Milestone - Refined Project Proposal
 
 **Author:** Matt Kollar  
 **Class Number & Title:** CST-391: Database & Web Application Development  
-**Date:** March 13, 2025
+**Date:** March 22, 2025
+
+---
+
+## Instructor Feedback
+
+> *No formal instructor feedback was provided at the time of submission.*
+
+## Response to Feedback
+
+Since no feedback was given, no changes were made in direct response to instructor comments. However, continued refinement was completed independently to ensure quality and completeness of the design and implementation.
+
+---
 
 ## **1. Introduction**  
-FaithTrack is a web application designed to help users manage a collection of faith-based resources, such as Bible verses, devotionals, prayers, and Christian books. The application provides CRUD (Create, Read, Update, Delete) functionality along with additional features like search and categorization. This project is built with an Express.js backend, a MySQL database, and two front-end frameworks: Angular and React.
+FaithTrack is a web application designed to help users manage a collection of faith-based resources, such as Bible verses, devotionals, prayers, and Christian books. The application provides CRUD (Create, Read, Update, Delete) functionality along with additional features like search and categorization. This project is built with an Express.js backend using Node.js and written in TypeScript, supported by a MySQL relational database. Frontend development will be handled with both Angular and React for experimentation and comparison.
+
+---
 
 ## **2. Design Updates**  
-This section includes the design updates for the FaithTrack API project. The updated wireframes, ER diagram, and other designs are shown in the images below. These designs reflect changes made to the project during development.
+This section includes the design updates for the FaithTrack API project. The updated wireframes, ER diagram, and other designs are shown in the images below. These reflect changes made to the project during development.
 
 **ER Diagram (Updated):**  
 ![Updated ER Diagram](docs/ER_Diagram_%20Updated.drawio.png)  
-*Changes:* The ER diagram now correctly depicts the relationships between resources, categories, and the newly added user favorites table. Foreign key constraints and data structure have been modified to reflect proper relational mappings.
+*Changes:* Corrected entity relationships, added `user_favorites` table, and enforced foreign key constraints.
 
 **UI Sitemap (Updated):**  
 ![Updated UI Sitemap](docs/Sitemap_Updated.drawio.png)  
-*Changes:* The UI sitemap visualizes the correct flow for managing resources, including viewing, creating, editing, deleting, and filtering resources. The flow now incorporates the new resource categorization and search/filter functionality.
+*Changes:* Refined flow to include category filtering, detail views, and creation/editing screens.
 
 **Homepage Wireframe (Updated):**  
 ![Updated Homepage UI Wireframe](docs/Homepage_UI_Wireframe_Updated.drawio.png)  
-*Changes:* The homepage layout has been updated to include a search bar and category filter. This allows users to more easily search for and filter resources based on their specific needs.
+*Changes:* Added search bar and category dropdown for filtering.
 
 **Add/Edit Resource Wireframe (Updated):**  
 ![Updated Add/Edit Resource Wireframe](docs/Add_Edit_Resource_Wireframe_Updated.drawio.png)  
-*Changes:* The form for adding and editing resources now includes fields for title, description, category, and scripture. These changes ensure that all required data is captured for each resource.
+*Changes:* Form supports full CRUD field inputs for title, description, scripture, and category selection.
 
 **Resource Details Wireframe (Updated):**  
 ![Updated Resource Details Page Wireframe](docs/Resource_Details_Page_Wireframe_Updated.drawio.png)  
-*Changes:* The resource detail page now shows all relevant information for each resource, including its title, category, scripture, and other details, making it easier for users to interact with resources.
+*Changes:* Displays expanded view of resource metadata.
 
 **User Favorites (Newly Added):**  
 ![Updated UML Diagram](docs/User_Favorites_New.drawio.png)  
-*Changes:* The UML diagram now includes a UserFavorites feature. This allows users to mark resources as their favorites and stores the relationship between the user and their selected resources.
+*Changes:* Added support for users to mark and manage favorite resources, reflected in both schema and logic.
 
 **UML Class Diagram (Updated):**  
 ![Updated UML Diagram](docs/UML_Updated.drawio.png)  
-*Changes:* The UML diagram has been updated to reflect changes to the ResourceController, ResourceService, and ResourceRepository, which now support the functionality for managing resources and user favorites.
-
-## **3. Updates Summary**  
-Below is a table summarizing the updates made throughout the development process:
-
-| Update Type       | Description                                                   | Status            |
-|-------------------|---------------------------------------------------------------|-------------------|
-| ER Diagram        | Updated relationships and added user favorites table          | Completed         |
-| UI Sitemap        | Refined resource management flow, including search/filter     | Completed         |
-| Homepage Wireframe| Updated to include search and filter functionality           | Completed         |
-| Add/Edit Resource Wireframe | Improved form fields to capture resource details | Completed         |
-| Resource Details Wireframe | Added resource detail view with necessary fields | Completed         |
-| User Favorites    | New functionality added to allow users to mark resources as favorites | Completed         |
-| UML Diagram       | Updated to include resource management and user favorites relationships | Completed         |
-
-**Known Issues:**  
-- No known issues at this time.
-
-## **4. Functionality Requirements (API Endpoints)**  
-Below is a table documenting the essential API endpoints implemented in the project:
-
-| HTTP Method | Endpoint                         | Description                                      | Request Body Example (for POST and PUT)                                                                 |
-|-------------|-----------------------------------|--------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| GET         | /api/resources                    | Fetch all resources                              | N/A                                                                                                    |
-| POST        | /api/resources                    | Create a new resource                            | `{ "title": "New Faith-Based Resource", "description": "A detailed guide on spiritual growth", "category_id": 1, "scripture": "John 3:16" }` |
-| PUT         | /api/resources/:id                | Update an existing resource                      | `{ "title": "Updated Faith Resource", "description": "Updated description", "category_id": 1, "scripture": "Psalm 23:1" }`   |
-| DELETE      | /api/resources/:id                | Delete a resource by ID                          | N/A                                                                                                    |
-
-### Example Usage:
-- **GET Request**:  
-    `GET http://localhost:5000/api/resources`  
-    *Returns all resources available in the database.*
-
-- **POST Request**:  
-    `POST http://localhost:5000/api/resources`  
-    *Request Body:*  
-    ```json
-    {
-      "title": "New Faith-Based Resource",
-      "description": "A detailed guide on spiritual growth",
-      "category_id": 1,
-      "scripture": "John 3:16"
-    }
-    ```  
-    *Creates a new resource in the database.*
-
-- **PUT Request**:  
-    `PUT http://localhost:5000/api/resources/1`  
-    *Request Body:*  
-    ```json
-    {
-      "title": "Updated Faith Resource",
-      "description": "Updated description",
-      "category_id": 1,
-      "scripture": "Psalm 23:1"
-    }
-    ```  
-    *Updates the resource with ID 1.*
-
-- **DELETE Request**:  
-    `DELETE http://localhost:5000/api/resources/1`  
-    *Deletes the resource with ID 1.*
-
-## **5. Screencast Documentation**  
-The following section provides the screencast demonstrating the functionality of the FaithTrack API:
-
-**Screencast Link**: [http://somup.com/cTeIDc7g00](#)  
-In this screencast, you can see:
-1. The GET, POST, PUT, and DELETE API requests being tested in Postman.
-2. The results of the operations as they affect the MySQL database.
-3. How the data is manipulated and displayed through the endpoints.
-
-## **6. Risks**  
-Here are some risks that could potentially affect the project's future development:
-- **Framework Complexity:** Handling two front-end frameworks (React and Angular) might lead to challenges in integrating with the backend.
-- **Database Design Adjustments:** During the development, the schema might need to be modified as new features are introduced.
-- **Deployment Issues:** Ensuring smooth deployment and integration between the backend, frontend, and MySQL database might present some challenges.
+*Changes:* Shows updated object relationships for controller-service-repository pattern.
 
 ---
+
+## **3. Updates Summary**  
+| Update Type                | Description                                                        | Status     |
+|----------------------------|--------------------------------------------------------------------|------------|
+| ER Diagram                 | Relationships corrected; added user_favorites                     | Completed  |
+| UI Sitemap                 | New flows for filtering and CRUD actions                          | Completed  |
+| Homepage Wireframe         | Includes category filter and search UI                            | Completed  |
+| Add/Edit Resource Wireframe| Form fields improved for better UX and validation                 | Completed  |
+| Resource Details Wireframe | More comprehensive view with full resource info                   | Completed  |
+| User Favorites             | New feature supported in UI and backend design                    | Completed  |
+| UML Diagram                | Reflects services and repositories for new logic                  | Completed  |
+
+**Known Issues:** None at this time.
+
+---
+
+## **4. REST API Documentation**  
+
+Your API follows REST conventions with plural nouns as resources and actions expressed via HTTP verbs:
+
+| HTTP Method | Endpoint              | Description                      | Example Body (POST/PUT) |
+|-------------|------------------------|----------------------------------|--------------------------|
+| GET         | `/api/resources`       | Fetch all resources              | N/A                      |
+| POST        | `/api/resources`       | Create new resource              | See below                |
+| PUT         | `/api/resources/:id`   | Update an existing resource      | See below                |
+| DELETE      | `/api/resources/:id`   | Delete resource by ID            | N/A                      |
+
+### Request Body Example (POST)
+```json
+{
+  "title": "New Faith-Based Resource",
+  "description": "A detailed guide on spiritual growth",
+  "category_id": 1,
+  "scripture": "John 3:16"
+}
+```
+
+### Request Body Example (PUT)
+```json
+{
+  "title": "Updated Faith Resource",
+  "description": "Updated description",
+  "category_id": 1,
+  "scripture": "Psalm 23:1"
+}
+```
+
+---
+
+## **5. Screencast Documentation**  
+The screencast demonstrates:
+
+1. Full CRUD operations using Postman (GET, POST, PUT, DELETE)
+2. MySQL Workbench view of the results
+3. Real-time interaction with the database through API calls
+
+🎥 **Screencast Link**: [http://somup.com/cTeIDc7g00](http://somup.com/cTeIDc7g00)
+
+---
+
+## **6. Risks**  
+- **Multi-Frontend Integration:** Potential conflicts or overhead when using Angular and React simultaneously.
+- **Relational Schema Scaling:** As more features are added, constraints and foreign key dependencies may require adjustments.
+- **Deployment Config:** Environment variables, server scripts, and database setup may differ across platforms.
